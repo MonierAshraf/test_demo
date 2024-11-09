@@ -13,6 +13,6 @@ jobs:
             - name: isntall dependencies
               run: pip install -r requirements.txt
             - name: run tests 
-              run: python -m test.py
+              run: python -m unittest  test.py
     
             
