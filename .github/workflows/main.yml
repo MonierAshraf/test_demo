@@ -1,27 +1,32 @@
 name: demo-test
-on :
-   push:
-   pull_request:
+on:
+  push:
+  pull_request:
+
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - name: checkout
-              uses: actions/checkout@v4
-            - name: setup python
-              uses: actions/setup-python@v2
-              with:
-                  python-version: 3.x
-            - name: isntall dependencies
-              run: pip install -r requirements.txt
-            - name: run tests 
-              run: python -m unittest  test.py
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-        steps:
-            - name: checkout v2
-              uses: actions/checkout@v4
-            - name : deploy done
-              run: echo "deploying done"
-            
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Specify the desired Python version, e.g., '3.8'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m unittest test.py
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy done
+        run: echo "Deployment done"
