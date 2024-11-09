@@ -1,5 +1,4 @@
 # test_calculator.py
-
 import unittest
 from calculator import Calculator
 
