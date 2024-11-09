@@ -14,5 +14,12 @@ jobs:
               run: pip install -r requirements.txt
             - name: run tests 
               run: python -m unittest  test.py
-    
+    deploy:
+        needs: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout v2
+              uses: actions/checkout@v4
+            - name : deploy done
+              run: echo "deploying done"
             
